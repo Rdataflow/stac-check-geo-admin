@@ -15,14 +15,14 @@ jobs:
       run: |
         pip install stac-check
 
-    - name: Extract metadata
+    - name: Run STAC check
       run: |
         urls="
           https://data.geo.admin.ch/api/stac/v0.9/
           https://data.geo.admin.ch/api/stac/v1/
         "
         for url in $urls; do
-          stac-check -r $url >> check.out
+          stac-check --recursive --links --assets $url >> check.out
         done
         cat check.out
 
