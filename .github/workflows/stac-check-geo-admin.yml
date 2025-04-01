@@ -22,7 +22,7 @@ jobs:
           https://data.geo.admin.ch/api/stac/v1/
         "
         for url in $urls; do
-          stac-check --collections --item-collection --recursive --links --assets $url >> check.out
+          stac-check --recursive --links --assets --max-depth 100 $url >> check.out
         done
         cat check.out
 
