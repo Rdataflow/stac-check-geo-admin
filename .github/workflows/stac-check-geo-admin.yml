@@ -5,7 +5,7 @@ on:
       - dispatch
 
 jobs:
-  extract_metadata:
+  stac_check:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
@@ -22,7 +22,7 @@ jobs:
           https://data.geo.admin.ch/api/stac/v1/
         "
         for url in $urls; do
-          stac-check --recursive --links --assets $url >> check.out
+          stac-check $url --recursive --links --assets >> check.out
         done
         cat check.out
 
